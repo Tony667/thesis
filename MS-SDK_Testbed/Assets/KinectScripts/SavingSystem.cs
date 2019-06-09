@@ -2,7 +2,7 @@
 using System.Collections;
 using System.IO;
 
-public class SavingLoadingSystem : MonoBehaviour
+public class SavingSystem : MonoBehaviour
 {   
     // the joint we want to track
     private KinectWrapper.NuiSkeletonPositionIndex HipCenter = KinectWrapper.NuiSkeletonPositionIndex.HipCenter;
@@ -54,16 +54,11 @@ public class SavingLoadingSystem : MonoBehaviour
 	// if it is saving data to a csv file or not
 	public bool isSaving = false;
 
-    // if it is loading data from a csv file or not
-    public bool isLoading = false;
-
 	// how many seconds to save data into the csv file, or 0 to save non-stop
 	public float secondsToSave = 0f;
 
 	// path to the csv file (;-limited)
 	public string movementName;
-
-    public string movementToLoad;
 
     // start time of data saving to csv file
     private float saveStartTime = -1f;
@@ -72,6 +67,7 @@ public class SavingLoadingSystem : MonoBehaviour
     KinectManager manager;
 
     string sLine;
+    string hLine;
 
     private void Awake()
     {
@@ -79,15 +75,11 @@ public class SavingLoadingSystem : MonoBehaviour
        
         // get the joint position
         manager = KinectManager.Instance;
-
-        movementToLoad = Application.dataPath + "/MovementDataBase/" + movementName + ".csv";
     }
 
 
-    void Update () 
+    public void Update () 
 	{
-
-
         if (manager && manager.IsInitialized())
 		{
 			if(manager.IsUserDetected())
@@ -127,7 +119,7 @@ public class SavingLoadingSystem : MonoBehaviour
                         using (StreamWriter writer = File.CreateText(Application.dataPath + "/MovementDataBase/" + movementName + ".csv"))
                         {
                             // csv file header
-                            sLine = "time;" +
+                            hLine = "time;" +
                                     "HipCenter;HipCenterCoordinates.x;HipCenterCoordinates.y;HipCenterCoordinates.z;" +
                                     "Spine;SpineCoordinates.x;SpineCoordinates.y;SpineCoordinates.z;" +
                                     "ShoulderCenter;ShoulderLeftCoordinates.x;ShoulderLeftCoordinates.y;ShoulderLeftCoordinates.z" +
@@ -148,12 +140,12 @@ public class SavingLoadingSystem : MonoBehaviour
                                     "KneeRight;KneeRightCoordinates.x;KneeRightCoordinates.y;KneeRightCoordinates.z;" +
                                     "AnkleRight;AnkleRightCoordinates.x;AnkleRightCoordinates.y;AnkleRightCoordinates.z;" +
                                     "FootRight;FootRightCoordinates.x;FootRightCoordinates.y;FootRightCoordinates.z)";
-                            writer.WriteLine(sLine);
+                            writer.WriteLine(hLine);
                         }
                     }
 
                     // check the start time
-                    if (saveStartTime < 0f)
+                    if (saveStartTime < 0f && manager.IsUserDetected())
                     {
                         saveStartTime = Time.time;
                     }
@@ -210,19 +202,5 @@ public class SavingLoadingSystem : MonoBehaviour
 				}
 			}
 		}
-
-        if (isLoading)
-        {
-            if(File.Exists(Application.dataPath + "/MovementDataBase/" + movementName + ".csv"))
-            {
-                using (StreamReader reader = File.OpenText(movementToLoad))
-                {
-                    while ((movementToLoad = reader.ReadLine()) != null)
-                    {
-                        Debug.Log(movementToLoad);
-                    }
-                }
-            }
-        }
     }
 }
