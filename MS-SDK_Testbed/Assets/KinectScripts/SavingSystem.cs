@@ -82,6 +82,8 @@ public class SavingSystem : MonoBehaviour
 	{
         if (manager && manager.IsInitialized())
 		{
+            Debug.Log("old in update");
+
 			if(manager.IsUserDetected())
 			{
 				uint userId = manager.GetPlayer1ID();

@@ -444,6 +444,7 @@ GameObject:
   - component: {fileID: 1585374192}
   - component: {fileID: 1585374191}
   - component: {fileID: 1585374194}
+  - component: {fileID: 1585374195}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -523,13 +524,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585374190}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac2ea87177b6af140a812143408051cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isLoading: 1
   movementToLoad: Movement_01
+--- !u!114 &1585374195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585374190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1099e76bca31943af17dda23e4ddde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSaving: 1
+  movementName: TestMove
 --- !u!1001 &2028506918
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -70,7 +70,7 @@ public class LoadingSystem : MonoBehaviour
                     {
                         sLine = movementToLoad.Split(';');
                         int HipCenter = int.Parse(sLine[1]);
-                        Debug.Log(HipCenter);
+                        Debug.Log(sLine[1]);
                     }
                 }
             }

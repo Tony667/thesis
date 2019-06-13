@@ -555,6 +555,7 @@ GameObject:
   - component: {fileID: 999714147}
   - component: {fileID: 999714152}
   - component: {fileID: 999714153}
+  - component: {fileID: 999714156}
   - component: {fileID: 999714154}
   - component: {fileID: 999714155}
   m_Layer: 0
@@ -718,16 +719,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999714146}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bcfe4ca12e17ec4490704580d10bc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isSaving: 0
-  isLoading: 1
   secondsToSave: 0
-  movementName: Movement_01
-  movementToLoad: Movement_01
+  movementName: Movement_02
 --- !u!114 &999714155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,6 +744,20 @@ MonoBehaviour:
   isSaving: 1
   secondsToSave: 0
   saveFilePath: joint_pos2.csv
+--- !u!114 &999714156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999714146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1099e76bca31943af17dda23e4ddde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSaving: 1
+  movementName: TestMove
 --- !u!1001 &1058160026
 PrefabInstance:
   m_ObjectHideFlags: 0
