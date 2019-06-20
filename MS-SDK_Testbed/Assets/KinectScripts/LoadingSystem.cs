@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Globalization;
 
 public class LoadingSystem : MonoBehaviour
 {
@@ -69,8 +70,8 @@ public class LoadingSystem : MonoBehaviour
                     while ((movementToLoad = reader.ReadLine()) != null)
                     {
                         sLine = movementToLoad.Split(';');
-                        HipCenterCoordinates.x = float.Parse(sLine[2]);
-                        Debug.Log(HipCenterCoordinates.x);
+                        //HipCenterCoordinates.x = float.Parse(sLine[2], CultureInfo.InvariantCulture);
+                        Debug.Log(sLine[0] + "," + sLine[1] + "," + sLine[3]);
                     }
                 }
             }
