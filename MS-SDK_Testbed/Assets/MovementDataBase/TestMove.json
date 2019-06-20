@@ -1,0 +1,122 @@
+{
+    "HipCenter": 0,
+    "Spine": 1,
+    "ShoulderCenter": 2,
+    "Head": 3,
+    "ShoulderLeft": 4,
+    "ElbowLeft": 5,
+    "WristLeft": 6,
+    "HandLeft": 7,
+    "ShoulderRight": 8,
+    "ElbowRight": 9,
+    "WristRight": 10,
+    "HandRight": 10,
+    "HipLeft": 12,
+    "KneeLeft": 13,
+    "AnkleLeft": 14,
+    "FootLeft": 15,
+    "HipRight": 16,
+    "KneeRight": 17,
+    "AnkleRight": 18,
+    "FootRight": 19,
+    "HipCenterCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "SpineCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "ShoulderCenterCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "HeadCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "ShoulderLeftCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "ElbowLeftCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "WristLeftCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "HandLeftCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "ShoulderRightCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "ElbowRightCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "WristRightCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "HandRightCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "HipLeftCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "KneeLeftCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "AnkleLeftCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "FootLeftCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "HipRightCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "KneeRightCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "AnkleRightCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "FootRightCoordinates": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    }
+}

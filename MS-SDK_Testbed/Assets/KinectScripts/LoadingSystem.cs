@@ -69,8 +69,8 @@ public class LoadingSystem : MonoBehaviour
                     while ((movementToLoad = reader.ReadLine()) != null)
                     {
                         sLine = movementToLoad.Split(';');
-                        int HipCenter = int.Parse(sLine[1]);
-                        Debug.Log(sLine[1]);
+                        HipCenterCoordinates.x = float.Parse(sLine[2]);
+                        Debug.Log(HipCenterCoordinates.x);
                     }
                 }
             }

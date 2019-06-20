@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -36,6 +37,8 @@ public class JSONSavingSystem : MonoBehaviour
             {
                 uint userId = manager.GetPlayer1ID();
 
+                //dataToSave = new DataToSave();
+
                 dataToSave.HipCenterCoordinates = manager.GetJointPosition(userId, (int)dataToSave.HipCenter);
                 dataToSave.SpineCoordinates = manager.GetJointPosition(userId, (int)dataToSave.Spine);
                 dataToSave.ShoulderCenterCoordinates = manager.GetJointPosition(userId, (int)dataToSave.ShoulderCenter);
@@ -59,22 +62,29 @@ public class JSONSavingSystem : MonoBehaviour
 
                 if (isSaving)
                 {
-                    for (int i = 0; i -1 < i++; i++)
-                    {
-                        Debug.Log(i);
-                        Debug.Log(Application.dataPath + "/MovementDataBase/" + movementName + "/" + "frame" + i + ".json");
+                    //for (int i = 0; i -1 < i++; i++)
+                    //{
+                        //Debug.Log(i);
+                        Debug.Log(Application.dataPath + "/MovementDataBase/" + movementName /*+ "/" + "frame" + i */+ ".json");
 
                         // create the file, if needed
-                        if (!File.Exists(Application.dataPath + "/MovementDataBase/" + movementName + "/" + "frame" + i.ToString() + ".json"))
+                        if (!File.Exists(Application.dataPath + "/MovementDataBase/" + movementName /*+ "/" + "frame" + i.ToString()*/ + ".json"))
                         {
-                            Debug.Log("in !file.exists");
-                            contents = JsonUtility.ToJson(dataToSave, true);
-                            FileInfo file = new FileInfo(Application.dataPath + "/MovementDataBase/" + movementName + "/" + "frame" + i.ToString() + ".json");
-                            file.Directory.Create();
-                            File.WriteAllText(Application.dataPath + "/MovementDataBase/" + movementName + "/" + "frame" + i.ToString() + ".json", contents);
-                            i++;
+                            
+                            //contents = JsonConverter.SerializeObject(dataToSave);
+
+                            //Debug.Log("in !file.exists");
+                            //contents = JsonUtility.ToJson(dataToSave, true);
+                            //FileInfo file = new FileInfo(Application.dataPath + "/MovementDataBase/" + movementName /*+ "/" + "frame" + i.ToString()*/ + ".json");
+                            //file.Directory.Create();
+                            //File.WriteAllText(Application.dataPath + "/MovementDataBase/" + movementName /*+ "/" + "frame" + i.ToString()*/ + ".json", contents);
+                            //using (StreamWriter writer = File.AppendText(Application.dataPath + "/MovementDataBase/" + movementName /*+ "/" + "frame" + i.ToString()*/ + ".json"))
+                            //{
+                            //    writer.WriteLine(contents);
+                            //}
+                            //i++;
                         }
-                    }
+                    //}
                 }       
             }
         }
