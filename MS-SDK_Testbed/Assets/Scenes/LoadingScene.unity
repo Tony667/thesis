@@ -663,6 +663,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: aj
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 87e566893def19941a64c350039ed4a0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 87e566893def19941a64c350039ed4a0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -721,7 +726,7 @@ PrefabInstance:
     - target: {fileID: -6057140222963153312, guid: 87e566893def19941a64c350039ed4a0,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87e566893def19941a64c350039ed4a0, type: 3}
@@ -826,6 +831,10 @@ PrefabInstance:
     - target: {fileID: 100036, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
       propertyPath: m_Name
       value: Cubeman
+      objectReference: {fileID: 0}
+    - target: {fileID: 100036, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400036, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1792,14 +1801,35 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585374190}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac2ea87177b6af140a812143408051cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerAvatars: []
+  Hip_Center: {fileID: 1779873197}
+  Spine: {fileID: 28834614}
+  Shoulder_Center: {fileID: 1083370511}
+  Head: {fileID: 244264575}
+  Shoulder_Left: {fileID: 1427478479}
+  Elbow_Left: {fileID: 2144303225}
+  Wrist_Left: {fileID: 561414416}
+  Hand_Left: {fileID: 1973232424}
+  Shoulder_Right: {fileID: 784752021}
+  Elbow_Right: {fileID: 2122767241}
+  Wrist_Right: {fileID: 1397379622}
+  Hand_Right: {fileID: 1816386190}
+  Hip_Left: {fileID: 372104192}
+  Knee_Left: {fileID: 426682201}
+  Ankle_Left: {fileID: 1475146671}
+  Foot_Left: {fileID: 2011370456}
+  Hip_Right: {fileID: 1069444954}
+  Knee_Right: {fileID: 2114738006}
+  Ankle_Right: {fileID: 18536051}
+  Foot_Right: {fileID: 1465479654}
   isLoading: 1
-  movementToLoad: Movement_01
+  movementToLoad: Movement_02
+  contents: []
+  fields: []
 --- !u!114 &1585374195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1821,7 +1851,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585374190}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a84bf3b138dc23f42b87e0125100be35, type: 3}
   m_Name: 

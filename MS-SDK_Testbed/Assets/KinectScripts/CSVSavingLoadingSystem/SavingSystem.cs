@@ -68,6 +68,8 @@ public class SavingSystem : MonoBehaviour
 
     string sLine;
     string hLine;
+    string frame = "Frame";
+    int frameNumber = 1;
 
     private void Awake()
     {
@@ -121,7 +123,8 @@ public class SavingSystem : MonoBehaviour
                         using (StreamWriter writer = File.CreateText(Application.dataPath + "/MovementDataBase/" + movementName + ".csv"))
                         {
                             // csv file header
-                            hLine = "time;" +
+                            hLine = "Frame" + 
+                                    "time;" +
                                     "HipCenter;HipCenterCoordinates.x;HipCenterCoordinates.y;HipCenterCoordinates.z;" +
                                     "Spine;SpineCoordinates.x;SpineCoordinates.y;SpineCoordinates.z;" +
                                     "ShoulderCenter;ShoulderLeftCoordinates.x;ShoulderLeftCoordinates.y;ShoulderLeftCoordinates.z" +
@@ -156,26 +159,28 @@ public class SavingSystem : MonoBehaviour
 					{
 						using(StreamWriter writer = File.AppendText(Application.dataPath + "/MovementDataBase/" + movementName + ".csv"))
 						{
-                            sLine = string.Format("{0:F3};{1};{2:F3};{3:F3};{4:F3};" +
-                                                        "{5};{6:F3};{7:F3};{8:F3};" +
-                                                        "{9};{10:F3};{11:F3};{12:F3};" +
-                                                        "{13};{14:F3};{15:F3};{16:F3};" +
-                                                        "{17};{18:F3};{19:F3};{20:F3};" +
-                                                        "{21};{22:F3};{23:F3};{24:F3};" +
-                                                        "{25};{26:F3};{27:F3};{28:F3};" +
-                                                        "{29};{30:F3};{31:F3};{32:F3};" +
-                                                        "{33};{34:F3};{35:F3};{36:F3};" +
-                                                        "{37};{38:F3};{39:F3};{40:F3};" +
-                                                        "{41};{42:F3};{43:F3};{44:F3};" +
-                                                        "{45};{46:F3};{47:F3};{48:F3};" +
-                                                        "{49};{50:F3};{51:F3};{52:F3};" +
-                                                        "{53};{54:F3};{55:F3};{56:F3};" +
-                                                        "{57};{58:F3};{59:F3};{60:F3};" +
-                                                        "{61};{62:F3};{63:F3};{64:F3};" +
-                                                        "{65};{66:F3};{67:F3};{68:F3};" +
-                                                        "{69};{70:F3};{71:F3};{72:F3};" +
-                                                        "{73};{74:F3};{75:F3};{76:F3};" +
-                                                        "{77};{78:F3};{79:F3};{80:F3}",
+                            sLine = string.Format("{0};{1:F3};" +
+                                                    "{2};{3:F3};{4:F3};{5:F3};" +
+                                                    "{6};{7:F3};{8:F3};{9:F3};" +
+                                                    "{10};{11:F3};{12:F3};{13:F3};" +
+                                                    "{14};{15:F3};{16:F3};{17:F3};" +
+                                                    "{18};{19:F3};{20:F3};{21:F3};" +
+                                                    "{22};{23:F3};{24:F3};{25:F3};" +
+                                                    "{26};{27:F3};{28:F3};{29:F3};" +
+                                                    "{30};{31:F3};{32:F3};{33:F3};" +
+                                                    "{34};{35:F3};{36:F3};{37:F3};" +
+                                                    "{38};{39:F3};{40:F3};{41:F3};" +
+                                                    "{42};{43:F3};{44:F3};{45:F3};" +
+                                                    "{46};{47:F3};{48:F3};{49:F3};" +
+                                                    "{50};{51:F3};{52:F3};{53:F3};" +
+                                                    "{54};{55:F3};{56:F3};{57:F3};" +
+                                                    "{58};{59:F3};{60:F3};{61:F3};" +
+                                                    "{62};{63:F3};{64:F3};{65:F3};" +
+                                                    "{66};{67:F3};{68:F3};{69:F3};" +
+                                                    "{70};{71:F3};{72:F3};{73:F3};" +
+                                                    "{74};{75:F3};{76:F3};{77:F3};" +
+                                                    "{78};{79:F3};{80:F3};{81:F3}",
+                                frame + frameNumber.ToString(),
                                 Time.time,
                                 (int)HipCenter, HipCenterCoordinates.x, HipCenterCoordinates.y, HipCenterCoordinates.z,
                                 (int)Spine, SpineCoordinates.x, SpineCoordinates.y, SpineCoordinates.z,
@@ -199,6 +204,7 @@ public class SavingSystem : MonoBehaviour
                                 (int)FootRight, FootRightCoordinates.x, FootRightCoordinates.y, FootRightCoordinates.z);
 
 							writer.WriteLine(sLine);
+                            frameNumber++;
 						}
 					}
 				}
