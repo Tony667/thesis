@@ -405,6 +405,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: aj
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 87e566893def19941a64c350039ed4a0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 87e566893def19941a64c350039ed4a0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -475,12 +480,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331533352}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8614bc559018e742ad3f3ff6a57ff40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &331533356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331533352}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6636d5faff87af447918d3e9734651e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &331533357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2261,7 +2278,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112932587}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac2ea87177b6af140a812143408051cd, type: 3}
   m_Name: 
@@ -2288,4 +2305,3 @@ MonoBehaviour:
   Foot_Right: {fileID: 338602101}
   isLoading: 1
   movementToLoad: Movement_01
-  fields: []
