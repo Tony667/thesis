@@ -85,10 +85,13 @@ public class LoadingSystem : MonoBehaviour
 
     //public string csvContent;
 
-    //public string[] contents;
-    //public string[] fields;
+    public string[] fields;
+    public string[] lines;
+    public string[] contents;
 
+    public int numberOfLines;
     int frameNumber = 2;
+    int i;
 
     public float[,] animationFloats;
     int nframes = 100000;
@@ -97,7 +100,12 @@ public class LoadingSystem : MonoBehaviour
 
     private void Start()
     {
-        LoadFile();
+        if (File.Exists(Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv"))
+        {
+            contents = File.ReadAllLines(Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv");
+            numberOfLines = contents.Length;
+        }
+        //LoadFile();
     }
 
     private void LoadFile()
@@ -183,35 +191,81 @@ public class LoadingSystem : MonoBehaviour
     {
         if (isLoading)
         {
-            if(frameNumber < nframes)
-            {
-                float[] curentPose = new float[81];
-                for(int i = 0; i < 81; i++)
-                {
-                    curentPose[i] = animationFloats[frameNumber, i];
-                }
 
-                Hip_Center.transform.position = new Vector3(curentPose[2], curentPose[3], curentPose[4]);
-                Spine.transform.position = new Vector3(curentPose[6], curentPose[7], curentPose[8]);
-                Shoulder_Center.transform.position = new Vector3(curentPose[10], curentPose[11], curentPose[12]);
-                Head.transform.position = new Vector3(curentPose[14], curentPose[15], curentPose[16]);
-                Shoulder_Left.transform.position = new Vector3(curentPose[18], curentPose[19], curentPose[20]);
-                Elbow_Left.transform.position = new Vector3(curentPose[22], curentPose[23], curentPose[24]);
-                Wrist_Left.transform.position = new Vector3(curentPose[26], curentPose[27], curentPose[28]);
-                Hand_Left.transform.position = new Vector3(curentPose[30], curentPose[31], curentPose[32]);
-                Shoulder_Right.transform.position = new Vector3(curentPose[34], curentPose[35], curentPose[36]);
-                Elbow_Right.transform.position = new Vector3(curentPose[38], curentPose[39], curentPose[40]);
-                Wrist_Right.transform.position = new Vector3(curentPose[42], curentPose[43], curentPose[44]);
-                Hand_Right.transform.position = new Vector3(curentPose[46], curentPose[47], curentPose[48]);
-                Hip_Left.transform.position = new Vector3(curentPose[50], curentPose[51], curentPose[52]);
-                Knee_Left.transform.position = new Vector3(curentPose[54], curentPose[55], curentPose[56]);
-                Ankle_Left.transform.position = new Vector3(curentPose[58], curentPose[59], curentPose[60]);
-                Foot_Left.transform.position = new Vector3(curentPose[62], curentPose[63], curentPose[64]);
-                Hip_Right.transform.position = new Vector3(curentPose[66], curentPose[67], curentPose[68]);
-                Knee_Right.transform.position = new Vector3(curentPose[70], curentPose[71], curentPose[72]);
-                Ankle_Right.transform.position = new Vector3(curentPose[74], curentPose[75], curentPose[76]);
-                Foot_Right.transform.position = new Vector3(curentPose[78], curentPose[79], curentPose[80]);
+            if (i == 1 && i < numberOfLines)
+            {
+                Debug.Log(i);
+                fields = contents[i].Split(';');
+                i++;
             }
+
+            //for (int i = 1; i < numberOfLines; i++)
+            //{
+            //    Debug.Log(i);
+            //    fields = contents[i].Split(';');
+            //}
+
+            //foreach(string line in contents)
+            //{
+            //    //if (firstLine)
+            //    //{
+            //    //    firstLine = false;
+            //    //    continue;
+            //    //}
+            //    fields = line.Split(';');
+            //    Hip_Center.transform.position = new Vector3(float.Parse(fields[3]), float.Parse(fields[4]), float.Parse(fields[5]));
+            //    Spine.transform.position = new Vector3(float.Parse(fields[7]), float.Parse(fields[8]), float.Parse(fields[9]));
+            //    Shoulder_Center.transform.position = new Vector3(float.Parse(fields[11]), float.Parse(fields[12]), float.Parse(fields[13]));
+            //    Head.transform.position = new Vector3(float.Parse(fields[15]), float.Parse(fields[16]), float.Parse(fields[17]));
+            //    Shoulder_Left.transform.position = new Vector3(float.Parse(fields[19]), float.Parse(fields[20]), float.Parse(fields[21]));
+            //    Elbow_Left.transform.position = new Vector3(float.Parse(fields[23]), float.Parse(fields[24]), float.Parse(fields[25]));
+            //    Wrist_Left.transform.position = new Vector3(float.Parse(fields[27]), float.Parse(fields[28]), float.Parse(fields[29]));
+            //    Hand_Left.transform.position = new Vector3(float.Parse(fields[31]), float.Parse(fields[32]), float.Parse(fields[33]));
+            //    Shoulder_Right.transform.position = new Vector3(float.Parse(fields[35]), float.Parse(fields[36]), float.Parse(fields[37]));
+            //    Elbow_Right.transform.position = new Vector3(float.Parse(fields[39]), float.Parse(fields[40]), float.Parse(fields[41]));
+            //    Wrist_Right.transform.position = new Vector3(float.Parse(fields[43]), float.Parse(fields[44]), float.Parse(fields[45]));
+            //    Hand_Right.transform.position = new Vector3(float.Parse(fields[47]), float.Parse(fields[48]), float.Parse(fields[49]));
+            //    Hip_Left.transform.position = new Vector3(float.Parse(fields[51]), float.Parse(fields[52]), float.Parse(fields[53]));
+            //    Knee_Left.transform.position = new Vector3(float.Parse(fields[55]), float.Parse(fields[56]), float.Parse(fields[57]));
+            //    Ankle_Left.transform.position = new Vector3(float.Parse(fields[59]), float.Parse(fields[60]), float.Parse(fields[61]));
+            //    Foot_Left.transform.position = new Vector3(float.Parse(fields[63]), float.Parse(fields[64]), float.Parse(fields[65]));
+            //    Hip_Right.transform.position = new Vector3(float.Parse(fields[67]), float.Parse(fields[68]), float.Parse(fields[69]));
+            //    Knee_Right.transform.position = new Vector3(float.Parse(fields[71]), float.Parse(fields[72]), float.Parse(fields[73]));
+            //    Ankle_Right.transform.position = new Vector3(float.Parse(fields[75]), float.Parse(fields[76]), float.Parse(fields[77]));
+            //    Foot_Right.transform.position = new Vector3(float.Parse(fields[79]), float.Parse(fields[80]), float.Parse(fields[81]));
+            //}
+
+            //if(frameNumber < nframes)
+            //{
+            //    float[] curentPose = new float[81];
+            //    for(int i = 0; i < 81; i++)
+            //    {
+            //        curentPose[i] = animationFloats[frameNumber, i];
+            //    }
+
+            //    Hip_Center.transform.position = new Vector3(curentPose[2], curentPose[3], curentPose[4]);
+            //    Spine.transform.position = new Vector3(curentPose[6], curentPose[7], curentPose[8]);
+            //    Shoulder_Center.transform.position = new Vector3(curentPose[10], curentPose[11], curentPose[12]);
+            //    Head.transform.position = new Vector3(curentPose[14], curentPose[15], curentPose[16]);
+            //    Shoulder_Left.transform.position = new Vector3(curentPose[18], curentPose[19], curentPose[20]);
+            //    Elbow_Left.transform.position = new Vector3(curentPose[22], curentPose[23], curentPose[24]);
+            //    Wrist_Left.transform.position = new Vector3(curentPose[26], curentPose[27], curentPose[28]);
+            //    Hand_Left.transform.position = new Vector3(curentPose[30], curentPose[31], curentPose[32]);
+            //    Shoulder_Right.transform.position = new Vector3(curentPose[34], curentPose[35], curentPose[36]);
+            //    Elbow_Right.transform.position = new Vector3(curentPose[38], curentPose[39], curentPose[40]);
+            //    Wrist_Right.transform.position = new Vector3(curentPose[42], curentPose[43], curentPose[44]);
+            //    Hand_Right.transform.position = new Vector3(curentPose[46], curentPose[47], curentPose[48]);
+            //    Hip_Left.transform.position = new Vector3(curentPose[50], curentPose[51], curentPose[52]);
+            //    Knee_Left.transform.position = new Vector3(curentPose[54], curentPose[55], curentPose[56]);
+            //    Ankle_Left.transform.position = new Vector3(curentPose[58], curentPose[59], curentPose[60]);
+            //    Foot_Left.transform.position = new Vector3(curentPose[62], curentPose[63], curentPose[64]);
+            //    Hip_Right.transform.position = new Vector3(curentPose[66], curentPose[67], curentPose[68]);
+            //    Knee_Right.transform.position = new Vector3(curentPose[70], curentPose[71], curentPose[72]);
+            //    Ankle_Right.transform.position = new Vector3(curentPose[74], curentPose[75], curentPose[76]);
+            //    Foot_Right.transform.position = new Vector3(curentPose[78], curentPose[79], curentPose[80]);
+            //}
+
+
             //if (File.Exists(Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv"))
             //{
             //contents = File.ReadAllLines(Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv");

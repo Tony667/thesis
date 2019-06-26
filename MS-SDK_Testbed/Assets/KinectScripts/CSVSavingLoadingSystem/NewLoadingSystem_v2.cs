@@ -40,6 +40,7 @@ public class NewLoadingSystem_v2 : MonoBehaviour
         lines = csvFile.text.Split('\n');
         for(int i = 1; i < lines.Length; i++)
         {
+            Debug.Log(i);
             fields = lines[i].Split(',');
             Hip_Center.transform.Translate(float.Parse(fields[2]), float.Parse(fields[3]), float.Parse(fields[4]));
             Spine.transform.Translate(float.Parse(fields[6]), float.Parse(fields[7]), float.Parse(fields[8]));

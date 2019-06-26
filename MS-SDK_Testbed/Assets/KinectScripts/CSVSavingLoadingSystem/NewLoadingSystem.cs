@@ -39,7 +39,7 @@ public class NewLoadingSystem : MonoBehaviour
 
     // path to the csv file
     public string movementToLoad;
-
+    public string context;
     public string[] sLine;
 
     // Update is called once per frame
@@ -59,7 +59,8 @@ public class NewLoadingSystem : MonoBehaviour
                             continue;
                         }
 
-                        sLine = movementToLoad.Split(';');
+                        context = movementToLoad;
+                        sLine = context.Split(',');
                         Hip_Center.transform.Translate(float.Parse(sLine[2]), float.Parse(sLine[3]), float.Parse(sLine[4]));
                         Spine.transform.Translate(float.Parse(sLine[6]), float.Parse(sLine[7]), float.Parse(sLine[8]));
                         Shoulder_Center.transform.Translate(float.Parse(sLine[10]), float.Parse(sLine[11]), float.Parse(sLine[12]));

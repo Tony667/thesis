@@ -2164,6 +2164,8 @@ GameObject:
   - component: {fileID: 2112932588}
   - component: {fileID: 2112932591}
   - component: {fileID: 2112932592}
+  - component: {fileID: 2112932593}
+  - component: {fileID: 2112932594}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2303,5 +2305,82 @@ MonoBehaviour:
   Knee_Right: {fileID: 906520186}
   Ankle_Right: {fileID: 308613319}
   Foot_Right: {fileID: 338602101}
-  isLoading: 1
+  isLoading: 0
+  movementToLoad: Movement_02
+  fields: []
+  lines: []
+  contents: []
+  numberOfLines: 0
+--- !u!114 &2112932593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112932587}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65721f3b9b46c3f4f9f0ff943cae060b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveVertically: 0
+  MirroredMovement: 0
+  Hip_Center: {fileID: 2089893469}
+  Spine: {fileID: 792677997}
+  Shoulder_Center: {fileID: 1366548741}
+  Head: {fileID: 868089983}
+  Shoulder_Left: {fileID: 1657536860}
+  Elbow_Left: {fileID: 1080645923}
+  Wrist_Left: {fileID: 1095427139}
+  Hand_Left: {fileID: 581093214}
+  Shoulder_Right: {fileID: 510244491}
+  Elbow_Right: {fileID: 865763899}
+  Wrist_Right: {fileID: 1101660349}
+  Hand_Right: {fileID: 204237615}
+  Hip_Left: {fileID: 601984968}
+  Knee_Left: {fileID: 576962766}
+  Ankle_Left: {fileID: 1451171774}
+  Foot_Left: {fileID: 1414393483}
+  Hip_Right: {fileID: 906520186}
+  Knee_Right: {fileID: 308613319}
+  Ankle_Right: {fileID: 338602101}
+  Foot_Right: {fileID: 204868708}
+  isLoading: 0
   movementToLoad: Movement_01
+  context: 
+  sLine: []
+--- !u!114 &2112932594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112932587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84bf3b138dc23f42b87e0125100be35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hip_Center: {fileID: 2089893469}
+  Spine: {fileID: 792677997}
+  Shoulder_Center: {fileID: 204868708}
+  Head: {fileID: 1366548741}
+  Shoulder_Left: {fileID: 868089983}
+  Elbow_Left: {fileID: 1657536860}
+  Wrist_Left: {fileID: 1080645923}
+  Hand_Left: {fileID: 1095427139}
+  Shoulder_Right: {fileID: 581093214}
+  Elbow_Right: {fileID: 510244491}
+  Wrist_Right: {fileID: 865763899}
+  Hand_Right: {fileID: 1101660349}
+  Hip_Left: {fileID: 204237615}
+  Knee_Left: {fileID: 601984968}
+  Ankle_Left: {fileID: 576962766}
+  Foot_Left: {fileID: 1451171774}
+  Hip_Right: {fileID: 1414393483}
+  Knee_Right: {fileID: 906520186}
+  Ankle_Right: {fileID: 308613319}
+  Foot_Right: {fileID: 338602101}
+  csvFile: {fileID: 4900000, guid: d55ca230c6a586c48986225f843a29ee, type: 3}
+  lines: []
+  fields: []
