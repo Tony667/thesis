@@ -199,9 +199,9 @@ public class LoadingSystem : MonoBehaviour
 
         fields = contents[frameNo].Split(';');
         Hip_Center.transform.position = new Vector3(float.Parse(fields[3]), float.Parse(fields[4]), float.Parse(fields[5]));
-        jointProgression.expertJoint0.Add(double.Parse(fields[3]));
-        jointProgression.expertJoint0.Add(double.Parse(fields[4]));
-        jointProgression.expertJoint0.Add(double.Parse(fields[5]));
+        jointProgression.expertJoint0X.Add(double.Parse(fields[3]));
+        jointProgression.expertJoint0Y.Add(double.Parse(fields[4]));
+        jointProgression.expertJoint0Z.Add(double.Parse(fields[5]));
         //do the rest
         Spine.transform.position = new Vector3(float.Parse(fields[7]), float.Parse(fields[8]), float.Parse(fields[9]));
         Shoulder_Center.transform.position = new Vector3(float.Parse(fields[11]), float.Parse(fields[12]), float.Parse(fields[13]));
