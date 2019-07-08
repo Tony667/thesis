@@ -183,15 +183,19 @@ public class DTWTest : MonoBehaviour
 
         Debug.Log(jointProgression.amatureMovementFootRightZ);
 
-        for (int i = 0; i <= jointProgression.expertArrays.Count; i++)
-        {
-            for (int j = 0; j <= jointProgression.amatureArrays.Count; j++)
-            {
-                simpleDTW = new SimpleDTW(jointProgression.expertArrays[i], jointProgression.amatureArrays[j]);
+        //for (int i = 0; i <= jointProgression.expertArrays.Count; i++)
+        //{
+        //    for (int j = 0; j <= jointProgression.amatureArrays.Count; j++)
+        //    {
+        Debug.Log(jointProgression.expertArrays[4].Length);
+        Debug.Log(jointProgression.amatureArrays[4].Length);
+        Debug.Log(jointProgression.expertArrays[4][125]);
+        Debug.Log(jointProgression.amatureArrays[4][125]);
+        simpleDTW = new SimpleDTW(jointProgression.expertArrays[4], jointProgression.amatureArrays[4]);
                 simpleDTW.computeDTW();
-                Debug.Log(simpleDTW.computeFForward());
-            }
-        }
+                Debug.Log("SUM = " + simpleDTW.getSum());
+        //    }
+        //}
     }
 
     //private void Update()

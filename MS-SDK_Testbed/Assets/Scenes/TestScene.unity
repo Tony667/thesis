@@ -365,12 +365,6 @@ MonoBehaviour:
   contents: []
   numberOfLines: 0
   frameNo: 1
---- !u!1 &256165678 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -2324271141525611035, guid: 87e566893def19941a64c350039ed4a0,
-    type: 3}
-  m_PrefabInstance: {fileID: 331533351}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &256165679 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -650382798008282385, guid: 87e566893def19941a64c350039ed4a0,
@@ -501,7 +495,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 87e566893def19941a64c350039ed4a0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 87e566893def19941a64c350039ed4a0,
         type: 3}
@@ -622,7 +616,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331533352}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac2ea87177b6af140a812143408051cd, type: 3}
   m_Name: 
@@ -648,7 +642,7 @@ MonoBehaviour:
   Ankle_Right: {fileID: 504038687}
   Foot_Right: {fileID: 1403243242}
   isLoading: 0
-  movementToLoad: Movement_04
+  movementToLoad: Movement_01_transform
   fields: []
   lines: []
   contents: []
@@ -694,6 +688,41 @@ MonoBehaviour:
   numberOfLines: 0
   fields: []
   frameNumber: 1
+--- !u!114 &331533359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331533352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65721f3b9b46c3f4f9f0ff943cae060b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fieldsNext: []
+  fields: []
+  csvFile: {fileID: 4900000, guid: d4370fbca4c1cb74d8209b4012101938, type: 3}
+  Hip_Center: {fileID: 1775955100}
+  Spine: {fileID: 1866288777}
+  Shoulder_Center: {fileID: 1708078536}
+  Head: {fileID: 1831232537}
+  Shoulder_Left: {fileID: 1589286370}
+  Elbow_Left: {fileID: 405261409}
+  Wrist_Left: {fileID: 283111777}
+  Hand_Left: {fileID: 2144802733}
+  Shoulder_Right: {fileID: 712967913}
+  Elbow_Right: {fileID: 26116158}
+  Wrist_Right: {fileID: 968723611}
+  Hand_Right: {fileID: 1253110228}
+  Hip_Left: {fileID: 1651227479}
+  Knee_Left: {fileID: 1800916053}
+  Ankle_Left: {fileID: 1412519441}
+  Foot_Left: {fileID: 2006034772}
+  Hip_Right: {fileID: 1733552145}
+  Knee_Right: {fileID: 1468047613}
+  Ankle_Right: {fileID: 504038687}
+  Foot_Right: {fileID: 1403243242}
 --- !u!1 &338602101
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,12 +2323,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 331533351}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1515096674 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4239561213071190503, guid: 87e566893def19941a64c350039ed4a0,
-    type: 3}
-  m_PrefabInstance: {fileID: 331533351}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1562224400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2536,6 +2559,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1562224400}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1775955100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -580671786865787653, guid: 87e566893def19941a64c350039ed4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 331533351}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1800916053 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8944160391559162441, guid: 87e566893def19941a64c350039ed4a0,
@@ -2599,12 +2628,6 @@ GameObject:
 --- !u!1 &2006034772 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4455781353118930537, guid: 87e566893def19941a64c350039ed4a0,
-    type: 3}
-  m_PrefabInstance: {fileID: 331533351}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2041678667 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -150529951738502599, guid: 87e566893def19941a64c350039ed4a0,
     type: 3}
   m_PrefabInstance: {fileID: 331533351}
   m_PrefabAsset: {fileID: 0}
@@ -2781,7 +2804,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112932587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2829,33 +2852,33 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112932587}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac2ea87177b6af140a812143408051cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hip_Center: {fileID: 1702456660}
-  Spine: {fileID: 1866288777}
-  Shoulder_Center: {fileID: 256165678}
-  Head: {fileID: 1831232537}
-  Shoulder_Left: {fileID: 1589286370}
-  Elbow_Left: {fileID: 405261409}
-  Wrist_Left: {fileID: 283111777}
-  Hand_Left: {fileID: 2144802733}
-  Shoulder_Right: {fileID: 26116158}
-  Elbow_Right: {fileID: 968723611}
-  Wrist_Right: {fileID: 1253110228}
-  Hand_Right: {fileID: 1515096674}
-  Hip_Left: {fileID: 1651227479}
-  Knee_Left: {fileID: 1800916053}
-  Ankle_Left: {fileID: 1412519441}
-  Foot_Left: {fileID: 2006034772}
-  Hip_Right: {fileID: 1733552145}
-  Knee_Right: {fileID: 1468047613}
-  Ankle_Right: {fileID: 504038687}
-  Foot_Right: {fileID: 2041678667}
+  Hip_Center: {fileID: 2089893469}
+  Spine: {fileID: 792677997}
+  Shoulder_Center: {fileID: 204868708}
+  Head: {fileID: 1366548741}
+  Shoulder_Left: {fileID: 868089983}
+  Elbow_Left: {fileID: 1657536860}
+  Wrist_Left: {fileID: 1080645923}
+  Hand_Left: {fileID: 1095427139}
+  Shoulder_Right: {fileID: 581093214}
+  Elbow_Right: {fileID: 510244491}
+  Wrist_Right: {fileID: 865763899}
+  Hand_Right: {fileID: 1101660349}
+  Hip_Left: {fileID: 204237615}
+  Knee_Left: {fileID: 601984968}
+  Ankle_Left: {fileID: 576962766}
+  Foot_Left: {fileID: 1451171774}
+  Hip_Right: {fileID: 1414393483}
+  Knee_Right: {fileID: 906520186}
+  Ankle_Right: {fileID: 308613319}
+  Foot_Right: {fileID: 338602101}
   isLoading: 0
-  movementToLoad: Movement_03
+  movementToLoad: Movement_11_transform
   fields: []
   lines: []
   contents: []
@@ -2873,8 +2896,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65721f3b9b46c3f4f9f0ff943cae060b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveVertically: 0
-  MirroredMovement: 0
+  fieldsNext: []
+  fields: []
+  csvFile: {fileID: 4900000, guid: d4370fbca4c1cb74d8209b4012101938, type: 3}
   Hip_Center: {fileID: 2089893469}
   Spine: {fileID: 792677997}
   Shoulder_Center: {fileID: 1366548741}
@@ -2895,10 +2919,6 @@ MonoBehaviour:
   Knee_Right: {fileID: 308613319}
   Ankle_Right: {fileID: 338602101}
   Foot_Right: {fileID: 204868708}
-  isLoading: 0
-  movementToLoad: Movement_01
-  context: 
-  sLine: []
 --- !u!114 &2112932594
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -116,9 +116,9 @@ public class SavingSystem : MonoBehaviour
 				if(isSaving)
 				{
                     // create the file, if needed
-                    if (!File.Exists(MovementDataBasePathCheck.pathExpert + movementName + ".csv"))
+                    if (!File.Exists(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementName + ".csv"))
                     {
-                        using (StreamWriter writer = File.CreateText(MovementDataBasePathCheck.pathExpert + movementName + ".csv"))
+                        using (StreamWriter writer = File.CreateText(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementName + ".csv"))
                         {
                             // csv file header
                             hLine = "Frame" + 
@@ -155,7 +155,7 @@ public class SavingSystem : MonoBehaviour
 
                     if ((secondsToSave == 0f) || ((Time.time - saveStartTime) <= secondsToSave))
 					{
-						using(StreamWriter writer = File.AppendText(MovementDataBasePathCheck.pathExpert + movementName + ".csv"))
+						using(StreamWriter writer = File.AppendText(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementName + ".csv"))
 						{
                             sLine = string.Format("{0};{1:F3};" +
                                                     "{2};{3:F3};{4:F3};{5:F3};" +

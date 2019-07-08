@@ -104,9 +104,9 @@ public class LoadingSystem : MonoBehaviour
 
     private void Start()
     {
-        if (File.Exists(Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv"))
+        if (File.Exists(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementToLoad + ".csv"))
         {
-            contents = File.ReadAllLines(Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv");
+            contents = File.ReadAllLines(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementToLoad + ".csv");
             numberOfLines = contents.Length;
         }
         //LoadFile();
