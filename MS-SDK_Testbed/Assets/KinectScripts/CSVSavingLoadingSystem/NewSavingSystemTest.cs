@@ -1,9 +1,10 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 
-public class SavingSystem : MonoBehaviour
-{   
+public class NewSavingSystemTest : MonoBehaviour
+{
     // the joint we want to track
     private KinectWrapper.NuiSkeletonPositionIndex HipCenter = KinectWrapper.NuiSkeletonPositionIndex.HipCenter;
     private KinectWrapper.NuiSkeletonPositionIndex Spine = KinectWrapper.NuiSkeletonPositionIndex.Spine;
@@ -48,17 +49,14 @@ public class SavingSystem : MonoBehaviour
     private Vector3 AnkleRightCoordinates;
     private Vector3 FootRightCoordinates;
 
-    // joint position at the moment, in Kinect coordinates
-    //public Vector3 outputPosition;
+    // if it is saving data to a csv file or not
+    public bool isSaving = false;
 
-	// if it is saving data to a csv file or not
-	public bool isSaving = false;
+    // how many seconds to save data into the csv file, or 0 to save non-stop
+    public float secondsToSave = 0f;
 
-	// how many seconds to save data into the csv file, or 0 to save non-stop
-	public float secondsToSave = 0f;
-
-	// path to the csv file (;-limited)
-	public string movementName;
+    // path to the csv file (;-limited)
+    public string movementName;
 
     // start time of data saving to csv file
     private float saveStartTime = -1f;
@@ -74,54 +72,54 @@ public class SavingSystem : MonoBehaviour
     private void Awake()
     {
         MovementDataBasePathCheck.Init();
-       
+
         // get the joint position
         manager = KinectManager.Instance;
     }
 
-
-    public void Update () 
-	{
+    // Update is called once per frame
+    void Update()
+    {
         if (manager && manager.IsInitialized())
-		{
-			if(manager.IsUserDetected())
-			{
-				uint userId = manager.GetPlayer1ID();
+        {
+            if (manager.IsUserDetected())
+            {
+                uint userId = manager.GetPlayer1ID();
 
                 // output the joint position for easy tracking
-                HipCenterCoordinates = manager.GetJointPosition(userId, (int)HipCenter);
-                SpineCoordinates = manager.GetJointPosition(userId, (int)Spine);
-                ShoulderCenterCoordinates = manager.GetJointPosition(userId, (int)ShoulderCenter);
-                HeadCoordinates = manager.GetJointPosition(userId, (int)Head);
-                ShoulderLeftCoordinates = manager.GetJointPosition(userId, (int)ShoulderLeft);
-                ElbowLeftCoordinates = manager.GetJointPosition(userId, (int)ElbowLeft);
-                WristLeftCoordinates = manager.GetJointPosition(userId, (int)WristLeft);
-                HandLeftCoordinates = manager.GetJointPosition(userId, (int)HandLeft);
-                ShoulderRightCoordinates = manager.GetJointPosition(userId, (int)ShoulderRight);
-                ElbowRightCoordinates = manager.GetJointPosition(userId, (int)ElbowRight);
-                WristRightCoordinates = manager.GetJointPosition(userId, (int)WristRight);
-                HandRightCoordinates = manager.GetJointPosition(userId, (int)HandRight);
-                HipLeftCoordinates = manager.GetJointPosition(userId, (int)HipLeft);
-                KneeLeftCoordinates = manager.GetJointPosition(userId, (int)KneeLeft);
-                AnkleLeftCoordinates = manager.GetJointPosition(userId, (int)AnkleLeft);
-                FootLeftCoordinates = manager.GetJointPosition(userId, (int)FootLeft);
-                HipRightCoordinates = manager.GetJointPosition(userId, (int)HipRight);
-                KneeRightCoordinates = manager.GetJointPosition(userId, (int)KneeRight);
-                AnkleRightCoordinates = manager.GetJointPosition(userId, (int)AnkleRight);
-                FootRightCoordinates = manager.GetJointPosition(userId, (int)FootRight);
+                HipCenterCoordinates = transform.eulerAngles;
+                SpineCoordinates = transform.eulerAngles;
+                ShoulderCenterCoordinates = transform.eulerAngles;
+                HeadCoordinates = transform.eulerAngles;
+                ShoulderLeftCoordinates = transform.eulerAngles;
+                ElbowLeftCoordinates = transform.eulerAngles;
+                WristLeftCoordinates = transform.eulerAngles;
+                HandLeftCoordinates = transform.eulerAngles;
+                ShoulderRightCoordinates = transform.eulerAngles;
+                ElbowRightCoordinates = transform.eulerAngles;
+                WristRightCoordinates = transform.eulerAngles;
+                HandRightCoordinates = transform.eulerAngles;
+                HipLeftCoordinates = transform.eulerAngles;
+                KneeLeftCoordinates = transform.eulerAngles;
+                AnkleLeftCoordinates = transform.eulerAngles;
+                FootLeftCoordinates = transform.eulerAngles;
+                HipRightCoordinates = transform.eulerAngles;
+                KneeRightCoordinates = transform.eulerAngles;
+                AnkleRightCoordinates = transform.eulerAngles;
+                FootRightCoordinates = transform.eulerAngles;
 
                 //Vector3 jointPos = manager.GetJointPosition(userId, (int)joint);
-				//outputPosition = jointPos;
+                //outputPosition = jointPos;
 
-				if(isSaving)
-				{
+                if (isSaving)
+                {
                     // create the file, if needed
                     if (!File.Exists(MovementDataBasePathCheck.pathExpert + movementName + ".csv"))
                     {
                         using (StreamWriter writer = File.CreateText(MovementDataBasePathCheck.pathExpert + movementName + ".csv"))
                         {
                             // csv file header
-                            hLine = "Frame" + 
+                            hLine = "Frame" +
                                     "time;" +
                                     "HipCenter;HipCenterCoordinates.x;HipCenterCoordinates.y;HipCenterCoordinates.z;" +
                                     "Spine;SpineCoordinates.x;SpineCoordinates.y;SpineCoordinates.z;" +
@@ -154,9 +152,9 @@ public class SavingSystem : MonoBehaviour
                     }
 
                     if ((secondsToSave == 0f) || ((Time.time - saveStartTime) <= secondsToSave))
-					{
-						using(StreamWriter writer = File.AppendText(MovementDataBasePathCheck.pathExpert + movementName + ".csv"))
-						{
+                    {
+                        using (StreamWriter writer = File.AppendText(MovementDataBasePathCheck.pathExpert + movementName + ".csv"))
+                        {
                             sLine = string.Format("{0};{1:F3};" +
                                                     "{2};{3:F3};{4:F3};{5:F3};" +
                                                     "{6};{7:F3};{8:F3};{9:F3};" +
@@ -201,12 +199,13 @@ public class SavingSystem : MonoBehaviour
                                 (int)AnkleRight, AnkleRightCoordinates.x, AnkleRightCoordinates.y, AnkleRightCoordinates.z,
                                 (int)FootRight, FootRightCoordinates.x, FootRightCoordinates.y, FootRightCoordinates.z);
 
-							writer.WriteLine(sLine);
+                            //sLine.Remove(sLine.Length - 2);// <-- check this
+                            writer.WriteLine(sLine);
                             frameNumber++;
-						}
-					}
-				}
-			}
-		}
+                        }
+                    }
+                }
+            }
+        }
     }
 }

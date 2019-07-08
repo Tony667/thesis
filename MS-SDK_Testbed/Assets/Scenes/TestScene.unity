@@ -578,6 +578,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8614bc559018e742ad3f3ff6a57ff40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &331533354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331533352}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 889b35004430bae46991543a9d27099c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expertMovementContents: []
+  expertMovementFields: []
+  expertMovementNumberOfLines: 0
+  amatureMovementContents: []
+  amatureMovementFields: []
+  amatureMovementNumberOfLines: 0
+  compare: 1
 --- !u!4 &331533355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 87e566893def19941a64c350039ed4a0,
@@ -629,7 +648,7 @@ MonoBehaviour:
   Ankle_Right: {fileID: 504038687}
   Foot_Right: {fileID: 1403243242}
   isLoading: 0
-  movementToLoad: Movement_06
+  movementToLoad: Movement_04
   fields: []
   lines: []
   contents: []
