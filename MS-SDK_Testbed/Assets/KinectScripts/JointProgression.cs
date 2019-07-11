@@ -10,12 +10,12 @@ public class JointProgression
     private double[] expertMovementSpineX;
     private double[] expertMovementSpineY;
     private double[] expertMovementSpineZ;
-    private double[] expertMovementHeadX;
-    private double[] expertMovementHeadY;
-    private double[] expertMovementHeadZ;
     private double[] expertMovementShoulderCenterX;
     private double[] expertMovementShoulderCenterY;
     private double[] expertMovementShoulderCenterZ;
+    private double[] expertMovementHeadX;
+    private double[] expertMovementHeadY;
+    private double[] expertMovementHeadZ;
     private double[] expertMovementShoulderLeftX;
     private double[] expertMovementShoulderLeftY;
     private double[] expertMovementShoulderLeftZ;
@@ -295,7 +295,7 @@ public class JointProgression
 
         expertMovementWristRightX = expertJoint10X.ToArray();
         expertMovementWristRightY = expertJoint10Y.ToArray();
-        expertMovementWristRightZ = expertJoint10X.ToArray();
+        expertMovementWristRightZ = expertJoint10Z.ToArray();
 
         expertMovementHandRightX = expertJoint11X.ToArray();
         expertMovementHandRightY = expertJoint11Y.ToArray();
@@ -329,16 +329,16 @@ public class JointProgression
         expertMovementAnckleRightY = expertJoint18Y.ToArray();
         expertMovementAnckleRightZ = expertJoint18Z.ToArray();
 
-        expertMovementFootRightX = expertJoint15X.ToArray();
-        expertMovementFootRightY = expertJoint15Y.ToArray();
-        expertMovementFootRightZ = expertJoint15Z.ToArray();
+        expertMovementFootRightX = expertJoint19X.ToArray();
+        expertMovementFootRightY = expertJoint19Y.ToArray();
+        expertMovementFootRightZ = expertJoint19Z.ToArray();
     }
 
     public void JointProgressionAmature()
     {
         amatureMovementHipCenterX = amatureJoint0X.ToArray();
         amatureMovementHipCenterY = amatureJoint0Y.ToArray();
-        amatureMovementHipCenterZ = amatureJoint0Y.ToArray();
+        amatureMovementHipCenterZ = amatureJoint0Z.ToArray();
 
         amatureMovementSpineX = amatureJoint1X.ToArray();
         amatureMovementSpineY = amatureJoint1Y.ToArray();
@@ -352,7 +352,7 @@ public class JointProgression
         amatureMovementHeadY = amatureJoint3Y.ToArray();
         amatureMovementHeadZ = amatureJoint3Z.ToArray();
 
-        amatureMovementShoulderLeftX = amatureJoint4Z.ToArray();
+        amatureMovementShoulderLeftX = amatureJoint4X.ToArray();
         amatureMovementShoulderLeftY = amatureJoint4Y.ToArray();
         amatureMovementShoulderLeftZ = amatureJoint4Z.ToArray();
 
@@ -425,12 +425,12 @@ public class JointProgression
         expertArrays.Add(expertMovementSpineX);
         expertArrays.Add(expertMovementSpineY);
         expertArrays.Add(expertMovementSpineZ);
-        expertArrays.Add(expertMovementHeadX);
-        expertArrays.Add(expertMovementHeadY);
-        expertArrays.Add(expertMovementHeadX);
         expertArrays.Add(expertMovementShoulderCenterX);
         expertArrays.Add(expertMovementShoulderCenterY);
         expertArrays.Add(expertMovementShoulderCenterX);
+        expertArrays.Add(expertMovementHeadX);
+        expertArrays.Add(expertMovementHeadY);
+        expertArrays.Add(expertMovementHeadZ);
         expertArrays.Add(expertMovementShoulderLeftX);
         expertArrays.Add(expertMovementShoulderLeftY);
         expertArrays.Add(expertMovementShoulderLeftZ);

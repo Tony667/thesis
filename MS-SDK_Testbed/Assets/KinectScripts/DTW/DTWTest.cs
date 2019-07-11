@@ -16,7 +16,7 @@ public class DTWTest : MonoBehaviour
     public string[] amatureMovementFields;
     public int amatureMovementNumberOfLines;
 
-    private string movementToLoad;
+    public string movementToLoad;
 
     public bool compare;
 
@@ -25,13 +25,13 @@ public class DTWTest : MonoBehaviour
 
     void Start()
     {
-        LoadingSystem loadingSystem = GetComponent<LoadingSystem>();
-        movementToLoad = loadingSystem.movementToLoad;
+        //LoadingSystem loadingSystem = GetComponent<LoadingSystem>();
+        //movementToLoad = loadingSystem.movementToLoad;
 
-        if (File.Exists(/*MovementDataBasePathCheck.pathExpert +*/Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv"))
+        if (File.Exists(/*MovementDataBasePathCheck.pathExpert +*/Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementToLoad + ".csv"))
         {
             Debug.Log("file exists");
-            expertMovementContents = File.ReadAllLines(Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv");
+            expertMovementContents = File.ReadAllLines(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementToLoad + ".csv");
             expertMovementNumberOfLines = expertMovementContents.Length;
             for (int i = 1; i < expertMovementNumberOfLines; i++)
             {
@@ -98,9 +98,9 @@ public class DTWTest : MonoBehaviour
                 jointProgression.expertJoint19Z.Add(double.Parse(expertMovementFields[81]));
             }
         }
-        if (File.Exists(Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv"))
+        if (File.Exists(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementToLoad + ".csv"))
         {
-            amatureMovementContents = File.ReadAllLines(/*MovementDataBasePathCheck.pathAmature +*/Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv");
+            amatureMovementContents = File.ReadAllLines(/*MovementDataBasePathCheck.pathAmature +*/Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementToLoad + ".csv");
             amatureMovementNumberOfLines = amatureMovementContents.Length;
             for (int j = 1; j < amatureMovementNumberOfLines; j++)
             {
@@ -183,19 +183,16 @@ public class DTWTest : MonoBehaviour
 
         Debug.Log(jointProgression.amatureMovementFootRightZ);
 
-        //for (int i = 0; i <= jointProgression.expertArrays.Count; i++)
-        //{
-        //    for (int j = 0; j <= jointProgression.amatureArrays.Count; j++)
-        //    {
-        Debug.Log(jointProgression.expertArrays[4].Length);
-        Debug.Log(jointProgression.amatureArrays[4].Length);
-        Debug.Log(jointProgression.expertArrays[4][125]);
-        Debug.Log(jointProgression.amatureArrays[4][125]);
-        simpleDTW = new SimpleDTW(jointProgression.expertArrays[4], jointProgression.amatureArrays[4]);
-                simpleDTW.computeDTW();
-                Debug.Log("SUM = " + simpleDTW.getSum());
-        //    }
-        //}
+        for (int i = 0; i <= jointProgression.expertArrays.Count; i++)
+        {
+            Debug.Log(jointProgression.expertArrays[4].Length);
+            Debug.Log(jointProgression.amatureArrays[4].Length);
+            Debug.Log(jointProgression.expertArrays[4][125]);
+            Debug.Log(jointProgression.amatureArrays[4][125]);
+            simpleDTW = new SimpleDTW(jointProgression.expertArrays[i], jointProgression.amatureArrays[i]);
+            simpleDTW.computeDTW();
+            Debug.Log("SUM = " + simpleDTW.getSum());
+        }
     }
 
     //private void Update()

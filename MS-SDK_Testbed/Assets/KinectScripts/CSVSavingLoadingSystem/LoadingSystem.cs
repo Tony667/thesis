@@ -113,25 +113,25 @@ public class LoadingSystem : MonoBehaviour
         jointProgression = new JointProgression();
      }
 
-    private void LoadFile()
-    {
-        if (File.Exists(Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv"))
-        {
-            animationFloats = new float[nframes, 81];
-            StreamReader reader = new StreamReader(Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv");
-            int frame = 0;
-            while (!reader.EndOfStream)
-            {
-                string[] Line = reader.ReadLine().Split(';');
-                for (int column = 0; column < Line.Length - 1; column++)
-                {
-                    animationFloats[frame, column] = float.Parse(Line[column]);
-                }
-                frame++;
-                //counterRec = frame; // remember length of data, to correctly display slider
-            }
-        }
-    }
+    //private void LoadFile()
+    //{
+    //    if (File.Exists(Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv"))
+    //    {
+    //        animationFloats = new float[nframes, 81];
+    //        StreamReader reader = new StreamReader(Application.dataPath + "/MovementDataBase/" + movementToLoad + ".csv");
+    //        int frame = 0;
+    //        while (!reader.EndOfStream)
+    //        {
+    //            string[] Line = reader.ReadLine().Split(';');
+    //            for (int column = 0; column < Line.Length - 1; column++)
+    //            {
+    //                animationFloats[frame, column] = float.Parse(Line[column]);
+    //            }
+    //            frame++;
+    //            //counterRec = frame; // remember length of data, to correctly display slider
+    //        }
+    //    }
+    //}
 
     //// recreates and reinitializes the lists of avatar controllers, after the list of avatars for player 1/2 was changed
     //public void ResetAvatarControllers()
