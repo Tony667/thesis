@@ -124,7 +124,7 @@ public class JointProgression
     private double[] amatureMovementAnkcleRightZ;
     private double[] amatureMovementFootRightX;
     private double[] amatureMovementFootRightY;
-    public double[] amatureMovementFootRightZ;
+    private double[] amatureMovementFootRightZ;
 
     public List<double> expertJoint0X = new List<double>();
     public List<double> expertJoint0Y = new List<double>();
@@ -427,7 +427,7 @@ public class JointProgression
         expertArrays.Add(expertMovementSpineZ);
         expertArrays.Add(expertMovementShoulderCenterX);
         expertArrays.Add(expertMovementShoulderCenterY);
-        expertArrays.Add(expertMovementShoulderCenterX);
+        expertArrays.Add(expertMovementShoulderCenterZ);
         expertArrays.Add(expertMovementHeadX);
         expertArrays.Add(expertMovementHeadY);
         expertArrays.Add(expertMovementHeadZ);

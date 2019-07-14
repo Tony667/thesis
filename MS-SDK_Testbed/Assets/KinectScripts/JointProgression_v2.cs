@@ -27,3 +27,13 @@ public class JointProgression_v2
         jointProgZ = jointZList.ToArray();
     }
 }
+
+public class ExpertHipCenterJointProg : JointProgression_v2
+{
+    public ExpertHipCenterJointProg(double x, double y, double z) : base(x, y, z) {}
+
+    public void ListToArray()
+    {
+        base.ListToArray();
+    }
+}
