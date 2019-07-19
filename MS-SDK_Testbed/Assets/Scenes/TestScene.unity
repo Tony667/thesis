@@ -590,7 +590,8 @@ MonoBehaviour:
   amatureMovementContents: []
   amatureMovementFields: []
   amatureMovementNumberOfLines: 0
-  movementToLoad: Movement_01_transform
+  expertMovementToLoad: 
+  amatureMovementToLoad: 
   compare: 0
 --- !u!4 &331533355 stripped
 Transform:
@@ -2739,7 +2740,6 @@ GameObject:
   - component: {fileID: 2112932593}
   - component: {fileID: 2112932594}
   - component: {fileID: 2112932595}
-  - component: {fileID: 2112932596}
   - component: {fileID: 2112932597}
   m_Layer: 0
   m_Name: Main Camera
@@ -2970,18 +2970,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLoading: 0
---- !u!114 &2112932596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112932587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b465be4e3626530459a185991741c8b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2112932597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3000,7 +2988,8 @@ MonoBehaviour:
   amatureMovementContents: []
   amatureMovementFields: []
   amatureMovementNumberOfLines: 0
-  movementToLoad: Movement_07_transform
+  expertMovementToLoad: Movement_14_transform
+  amatureMovementToLoad: Movement_14_transform_Avg_Take10_
   compare: 0
 --- !u!1 &2144802733 stripped
 GameObject:

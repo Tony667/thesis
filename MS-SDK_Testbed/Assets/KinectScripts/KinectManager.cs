@@ -186,13 +186,13 @@ public class KinectManager : MonoBehaviour
 	private BoneOrientationsConstraint boneConstraintsFilter;
 	private SelfIntersectionConstraint selfIntersectionConstraint;
 
-    public GameObject sphere00;
-    public GameObject sphere01;
-    public GameObject sphere02;
-    public GameObject sphere03;
-    public GameObject sphere04;
-    public GameObject sphere05;
-    public GameObject sphere06;
+    //public GameObject sphere00;
+    //public GameObject sphere01;
+    //public GameObject sphere02;
+    //public GameObject sphere03;
+    //public GameObject sphere04;
+    //public GameObject sphere05;
+    //public GameObject sphere06;
 
     private Vector3 HipCenterCoordinates;
     private Vector3 SpineCoordinates;
@@ -214,12 +214,6 @@ public class KinectManager : MonoBehaviour
     private Vector3 KneeRightCoordinates;
     private Vector3 AnkleRightCoordinates;
     private Vector3 FootRightCoordinates;
-
-    public bool isSaving = false;
-    public bool isLoading = false;
-
-
-
 
     // returns the single KinectManager instance
     public static KinectManager Instance
@@ -1181,16 +1175,6 @@ public class KinectManager : MonoBehaviour
 					//if(controller.Active)
 					{
 						controller.UpdateAvatar(Player1ID);
-
-                        if (isSaving)
-                        {
-                            Save();
-                        }
-
-                        if (isLoading)
-                        {
-                            Load();
-                        }
 						
 						//GetRawSkeletonJointPos(Player1ID, 00); 
 						//GetRawSkeletonJointPos(Player1ID, 01); 

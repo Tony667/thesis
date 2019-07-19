@@ -48,6 +48,7 @@ public class SavingSystem : MonoBehaviour
     private Vector3 AnkleRightCoordinates;
     private Vector3 FootRightCoordinates;
 
+    public GameObject cubeMan;
     // joint position at the moment, in Kinect coordinates
     //public Vector3 outputPosition;
 
@@ -57,8 +58,10 @@ public class SavingSystem : MonoBehaviour
 	// how many seconds to save data into the csv file, or 0 to save non-stop
 	public float secondsToSave = 0f;
 
-	// path to the csv file (;-limited)
-	public string movementName;
+    // path to the csv file (;-limited)
+    public string mainFileToSave; //main filenames --> ExpertMovement , AmatureMovement
+    public string secondaryFileToSave;
+    public string movementName;
 
     // start time of data saving to csv file
     private float saveStartTime = -1f;
@@ -77,11 +80,21 @@ public class SavingSystem : MonoBehaviour
        
         // get the joint position
         manager = KinectManager.Instance;
+        cubeMan = GameObject.Find("CubeMan");
     }
 
 
     public void Update () 
 	{
+        if (isSaving)
+        {
+            cubeMan.gameObject.SetActive(true);
+        }
+        else
+        {
+            cubeMan.gameObject.SetActive(false);
+        }
+
         if (manager && manager.IsInitialized())
 		{
 			if(manager.IsUserDetected())
@@ -115,17 +128,22 @@ public class SavingSystem : MonoBehaviour
 
 				if(isSaving)
 				{
-                    // create the file, if needed
-                    if (!File.Exists(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementName + ".csv"))
+                    if (!Directory.Exists(Application.dataPath + "/MovementDataBase/" + mainFileToSave + "/" + secondaryFileToSave + "/"))
                     {
-                        using (StreamWriter writer = File.CreateText(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementName + ".csv"))
+                        Directory.CreateDirectory(Application.dataPath + "/MovementDataBase/" + mainFileToSave + "/" + secondaryFileToSave + "/");
+                    }
+
+                    // create the file, if needed
+                    if (!File.Exists(Application.dataPath + "/MovementDataBase/" + mainFileToSave + "/" + secondaryFileToSave + "/" + movementName + ".csv"))
+                    {
+                        using (StreamWriter writer = File.CreateText(Application.dataPath + "/MovementDataBase/" + mainFileToSave + "/" + secondaryFileToSave + "/" + movementName + ".csv"))
                         {
                             // csv file header
-                            hLine = "Frame" + 
-                                    "time;" +
+                            hLine = "FrameNo;" + 
+                                    "Time;" +
                                     "HipCenter;HipCenterCoordinates.x;HipCenterCoordinates.y;HipCenterCoordinates.z;" +
                                     "Spine;SpineCoordinates.x;SpineCoordinates.y;SpineCoordinates.z;" +
-                                    "ShoulderCenter;ShoulderLeftCoordinates.x;ShoulderLeftCoordinates.y;ShoulderLeftCoordinates.z" +
+                                    "ShoulderCenter;ShoulderLeftCoordinates.x;ShoulderLeftCoordinates.y;ShoulderLeftCoordinates.z;" +
                                     "Head;HeadCoordinates.x;HeadCoordinates.y;HeadCoordinates.z;" +
                                     "ShoulderLeft;ShoulderLeftCoordinates.x;ShoulderLeftCoordinates.y;ShoulderLeftCoordinates.z;" +
                                     "ElbowLeft;ElbowLeftCoordinates.x;ElbowLeftCoordinates.y;ElbowLeftCoordinates.z;" +
@@ -142,7 +160,7 @@ public class SavingSystem : MonoBehaviour
                                     "HipRight;HipRightCoordinates.x;HipRightCoordinates.y;HipRightCoordinates.z;" +
                                     "KneeRight;KneeRightCoordinates.x;KneeRightCoordinates.y;KneeRightCoordinates.z;" +
                                     "AnkleRight;AnkleRightCoordinates.x;AnkleRightCoordinates.y;AnkleRightCoordinates.z;" +
-                                    "FootRight;FootRightCoordinates.x;FootRightCoordinates.y;FootRightCoordinates.z)";
+                                    "FootRight;FootRightCoordinates.x;FootRightCoordinates.y;FootRightCoordinates.z";
                             writer.WriteLine(hLine);
                         }
                     }
@@ -155,7 +173,7 @@ public class SavingSystem : MonoBehaviour
 
                     if ((secondsToSave == 0f) || ((Time.time - saveStartTime) <= secondsToSave))
 					{
-						using(StreamWriter writer = File.AppendText(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementName + ".csv"))
+						using(StreamWriter writer = File.AppendText(Application.dataPath + "/MovementDataBase/" + mainFileToSave + "/" + secondaryFileToSave +"/" + movementName + ".csv"))
 						{
                             sLine = string.Format("{0};{1:F3};" +
                                                     "{2};{3:F3};{4:F3};{5:F3};" +

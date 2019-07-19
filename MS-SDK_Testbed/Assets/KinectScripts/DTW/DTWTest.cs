@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO; 
 using UnityEngine;
+using UnityEngine.UI;
 using DTW;
+using TMPro;
 
 public class DTWTest : MonoBehaviour
 {
@@ -16,22 +18,33 @@ public class DTWTest : MonoBehaviour
     public string[] amatureMovementFields;
     public int amatureMovementNumberOfLines;
 
-    public string movementToLoad;
+    public string expertMovementToLoad;
+    public string amatureFileToLoad;
+    public string amatureMovementToLoad;
+
+    private string text;
+    private TextMeshProUGUI jointScores;
+    private TextMeshProUGUI titleText;
+
 
     public bool compare;
 
     JointProgression jointProgression = new JointProgression();
+    CalculateJointAverage calculateJointAverage = new CalculateJointAverage();
     SimpleDTW simpleDTW;
 
     void Start()
     {
         //LoadingSystem loadingSystem = GetComponent<LoadingSystem>();
         //movementToLoad = loadingSystem.movementToLoad;
+        Debug.Log("DTWTest Start");
+        titleText = GameObject.Find("Title").GetComponent<TextMeshProUGUI>();
+        jointScores = GameObject.Find("Board").GetComponent<TextMeshProUGUI>();
 
-        if (File.Exists(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementToLoad + ".csv"))
+        if (File.Exists(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + "Movements/" + expertMovementToLoad + ".csv"))
         {
             Debug.Log("file exists");
-            expertMovementContents = File.ReadAllLines(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementToLoad + ".csv");
+            expertMovementContents = File.ReadAllLines(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + "Movements/" + expertMovementToLoad + ".csv");
             expertMovementNumberOfLines = expertMovementContents.Length;
             for (int i = 1; i < expertMovementNumberOfLines; i++)
             {
@@ -118,9 +131,10 @@ public class DTWTest : MonoBehaviour
                 jointProgression.expertJoint19Z.Add(double.Parse(expertMovementFields[81]));
             }
         }
-        if (File.Exists(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementToLoad + ".csv"))
+
+        if (File.Exists(Application.dataPath + "/MovementDataBase/" + "AmatureMovement/" + amatureFileToLoad + "/" + amatureMovementToLoad + ".csv"))
         {
-            amatureMovementContents = File.ReadAllLines(Application.dataPath + "/MovementDataBase/" + "ExpertMovement/" + movementToLoad + ".csv");
+            amatureMovementContents = File.ReadAllLines(Application.dataPath + "/MovementDataBase/" + "AmatureMovement/" + amatureFileToLoad + "/" + amatureMovementToLoad + ".csv");
             amatureMovementNumberOfLines = amatureMovementContents.Length;
             for (int j = 1; j < amatureMovementNumberOfLines; j++)
             {
@@ -214,7 +228,7 @@ public class DTWTest : MonoBehaviour
         //SimpleDTW.y = double.Parse(amatureMovementFields);
         //simpleDTW.computeDTW(); 
 
-        Debug.Log("in compare");
+        //Debug.Log("in compare");
         jointProgression.JointProgressionExpert();
         jointProgression.JointProgressionAmature();
 
@@ -236,11 +250,36 @@ public class DTWTest : MonoBehaviour
             //    Debug.Log("expert arrays: " + jointProgression.expertArrays[i][j]);
             //    Debug.Log("amature arrays: " + jointProgression.amatureArrays[i][j]);
             //}
-            
+            calculateJointAverage.dtwResults.Add(simpleDTW.getSum());
             Debug.Log("SUM = " + simpleDTW.getSum());
         }
-    }
+        calculateJointAverage.CalculateAverage();
+        Debug.Log("some shit " + calculateJointAverage.CalculateAverage());
 
+        if (!Directory.Exists(Application.dataPath + "/MovementDataBase/" + "AmatureMovement/" + amatureFileToLoad + "/" + "Avg/"))
+        {
+            Directory.CreateDirectory(Application.dataPath + "/MovementDataBase/" + "AmatureMovement/" + amatureFileToLoad + "/" + "Avg/");
+        }
+
+        if (!File.Exists(Application.dataPath + "/MovementDataBase/" + "AmatureMovement/" + amatureFileToLoad + "/" + "Avg/" + amatureMovementToLoad + ".txt"))
+        {
+            using (StreamWriter writer = File.CreateText(Application.dataPath + "/MovementDataBase/" + "AmatureMovement/" + amatureFileToLoad + "/" + "Avg/" + amatureMovementToLoad + "Score" + ".txt"))
+            {
+                text = string.Format("HipCenterAvg = {0} \nSpineAvg = {1} \nShoulderCenterAvg = {2} \nHeadAvg = {3} \nShoulderLeftAvg = {4} \nElbowLeftAvg = {5} \nWristLeftAvg = {6} \nHandLeftAvg = {7} \nShoulderRightAvg = {8} \nElbowRightAvg = {9} \nWristRightAvg = {10} \nHandRightAvg = {11} \n" +
+                    "HipLeftAvg = {12} \nKneeLeftAvg = {13} \nAnckleLeftAvg = {14} \nFootLeftAvg = {15} \nHipRightAvg = {16} \nKneeRightAvg = {17} \nAnckleRightAvg = {18} \nFootRightAvg = {19}",
+                    calculateJointAverage.CalculateAverage().Item1, calculateJointAverage.CalculateAverage().Item2, calculateJointAverage.CalculateAverage().Item3, calculateJointAverage.CalculateAverage().Item4, calculateJointAverage.CalculateAverage().Item5,
+                    calculateJointAverage.CalculateAverage().Item6, calculateJointAverage.CalculateAverage().Item7, calculateJointAverage.CalculateAverage().Item8, calculateJointAverage.CalculateAverage().Item9, calculateJointAverage.CalculateAverage().Item10,
+                    calculateJointAverage.CalculateAverage().Item11, calculateJointAverage.CalculateAverage().Item12, calculateJointAverage.CalculateAverage().Item13, calculateJointAverage.CalculateAverage().Item14, calculateJointAverage.CalculateAverage().Item15,
+                    calculateJointAverage.CalculateAverage().Item16, calculateJointAverage.CalculateAverage().Item17, calculateJointAverage.CalculateAverage().Item18, calculateJointAverage.CalculateAverage().Item19, calculateJointAverage.CalculateAverage().Item20);
+
+                writer.WriteLine(text);
+            }
+        }
+
+        titleText.text = "Your Score";
+        jointScores.text = text;
+
+    }
     //private void Update()
     //{
     //    if (compare)
