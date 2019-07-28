@@ -16,7 +16,7 @@ public class SavingSystem : MonoBehaviour
     private KinectWrapper.NuiSkeletonPositionIndex ShoulderRight = KinectWrapper.NuiSkeletonPositionIndex.ShoulderRight;
     private KinectWrapper.NuiSkeletonPositionIndex ElbowRight = KinectWrapper.NuiSkeletonPositionIndex.ElbowRight;
     private KinectWrapper.NuiSkeletonPositionIndex WristRight = KinectWrapper.NuiSkeletonPositionIndex.WristRight;
-    private KinectWrapper.NuiSkeletonPositionIndex HandRight = KinectWrapper.NuiSkeletonPositionIndex.WristRight;
+    private KinectWrapper.NuiSkeletonPositionIndex HandRight = KinectWrapper.NuiSkeletonPositionIndex.HandRight;
     private KinectWrapper.NuiSkeletonPositionIndex HipLeft = KinectWrapper.NuiSkeletonPositionIndex.HipLeft;
     private KinectWrapper.NuiSkeletonPositionIndex KneeLeft = KinectWrapper.NuiSkeletonPositionIndex.KneeLeft;
     private KinectWrapper.NuiSkeletonPositionIndex AnkleLeft = KinectWrapper.NuiSkeletonPositionIndex.AnkleLeft;
@@ -49,6 +49,7 @@ public class SavingSystem : MonoBehaviour
     private Vector3 FootRightCoordinates;
 
     public GameObject cubeMan;
+    public GameObject model;
     // joint position at the moment, in Kinect coordinates
     //public Vector3 outputPosition;
 
@@ -68,6 +69,7 @@ public class SavingSystem : MonoBehaviour
 
     // get the joint position
     KinectManager manager;
+    public DTWTest dtwTest;
 
     string sLine;
     string hLine;
@@ -80,7 +82,14 @@ public class SavingSystem : MonoBehaviour
        
         // get the joint position
         manager = KinectManager.Instance;
-        cubeMan = GameObject.Find("CubeMan");
+        cubeMan = GameObject.Find("Cubeman");
+        model = GameObject.Find("aj");
+        dtwTest = GetComponent<DTWTest>();
+
+        if (!Directory.Exists(Application.dataPath + "/MovementDataBase/" + mainFileToSave + "/" + secondaryFileToSave + "/"))
+        {
+            Directory.CreateDirectory(Application.dataPath + "/MovementDataBase/" + mainFileToSave + "/" + secondaryFileToSave + "/");
+        }
     }
 
 
@@ -89,17 +98,22 @@ public class SavingSystem : MonoBehaviour
         if (isSaving)
         {
             cubeMan.gameObject.SetActive(true);
+            model.gameObject.SetActive(true);
         }
         else
         {
             cubeMan.gameObject.SetActive(false);
+            model.gameObject.SetActive(false);
         }
 
         if (manager && manager.IsInitialized())
 		{
+            Debug.Log("1");
 			if(manager.IsUserDetected())
 			{
-				uint userId = manager.GetPlayer1ID();
+                Debug.Log("2");
+
+                uint userId = manager.GetPlayer1ID();
 
                 // output the joint position for easy tracking
                 HipCenterCoordinates = manager.GetJointPosition(userId, (int)HipCenter);
@@ -128,10 +142,7 @@ public class SavingSystem : MonoBehaviour
 
 				if(isSaving)
 				{
-                    if (!Directory.Exists(Application.dataPath + "/MovementDataBase/" + mainFileToSave + "/" + secondaryFileToSave + "/"))
-                    {
-                        Directory.CreateDirectory(Application.dataPath + "/MovementDataBase/" + mainFileToSave + "/" + secondaryFileToSave + "/");
-                    }
+                    Debug.Log("3");
 
                     // create the file, if needed
                     if (!File.Exists(Application.dataPath + "/MovementDataBase/" + mainFileToSave + "/" + secondaryFileToSave + "/" + movementName + ".csv"))
@@ -152,7 +163,7 @@ public class SavingSystem : MonoBehaviour
                                     "ShoulderRight;ShoulderRightCoordinates.x;ShoulderRightCoordinates.y;ShoulderRightCoordinates.z;" +
                                     "ElbowRight;ElbowRightCoordinates.x;ShoulderRightCoordinates.y;ShoulderRightCoordinates.z;" +
                                     "WristRight;WristRightCoordinates.x;WristRightCoordinates.y;WristRightCoordinates.z;" +
-                                    "HandRight;WristRightCoordinates.x;WristRightCoordinates.y;WristRightCoordinates.z;" +
+                                    "HandRight;HandRightCoordinates.x;HandRightCoordinates.y;HandRightCoordinates.z;" +
                                     "HipLeft;HipLeftCoordinates.x;HipLeftCoordinates.y;HipLeftCoordinates.z;" +
                                     "KneeLeft;KneeLeftCoordinates.x;KneeLeftCoordinates.y;KneeLeftCoordinates.z;" +
                                     "AnkleLeft;AnkleLeftCoordinates.x;AnkleLeftCoordinates.y;AnkleLeftCoordinates.z;" +
@@ -197,7 +208,7 @@ public class SavingSystem : MonoBehaviour
                                                     "{74};{75:F3};{76:F3};{77:F3};" +
                                                     "{78};{79:F3};{80:F3};{81:F3}",
                                 frame + frameNumber.ToString(),
-                                Time.time,
+                                Time.time - saveStartTime,
                                 (int)HipCenter, HipCenterCoordinates.x, HipCenterCoordinates.y, HipCenterCoordinates.z,
                                 (int)Spine, SpineCoordinates.x, SpineCoordinates.y, SpineCoordinates.z,
                                 (int)ShoulderCenter, ShoulderCenterCoordinates.x, ShoulderCenterCoordinates.y, ShoulderCenterCoordinates.z,
@@ -222,8 +233,13 @@ public class SavingSystem : MonoBehaviour
 							writer.WriteLine(sLine);
                             frameNumber++;
 						}
-					}
-				}
+                    }
+                    else if ((Time.time - saveStartTime) >= secondsToSave)
+                    {
+                        dtwTest.compare = true;
+                        isSaving = false;
+                    }
+                }
 			}
 		}
     }

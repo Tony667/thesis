@@ -89,16 +89,16 @@ public class LoadingSystem : MonoBehaviour
     //public string csvContent;
 
     public string[] fields;
-    public string[] lines;
+    //public string[] lines;
     public string[] contents;
 
     public int numberOfLines;
     int frameNumber = 2;
     int i;
 
-    public float[,] animationFloats;
-    int nframes = 100000;
-    float timer = 0.1f;
+    //public float[,] animationFloats;
+    //int nframes = 100000;
+    //float timer = 0.1f;
 
     public int frameNo = 1;
 
@@ -114,7 +114,7 @@ public class LoadingSystem : MonoBehaviour
         }
         //LoadFile();
         jointProgression = new JointProgression();
-     }
+    }
 
     //private void LoadFile()
     //{
